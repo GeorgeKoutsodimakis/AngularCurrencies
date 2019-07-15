@@ -6,8 +6,7 @@
 </div>
 
 <ul>
-  <li *ngFor="let currency of currencies">
-    {{currency.name}}
+  <li *ngFor="let coin of coinList | keyvalue">
+    {{coin.key}} - {{coin.value.FullName}}
   </li>
 </ul>
-
