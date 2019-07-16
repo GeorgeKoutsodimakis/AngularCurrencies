@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Coin } from '../Model/coin.model';
-import { CoinList } from '../Model/coinList.model';
-import { coinResponse } from '../Response/coinResponse.model';
+import { CoinList } from '../Model/coinlist.model';
+import { CoinResponse } from '../Response/coin.response.model';
 
 
 @Injectable({
@@ -22,7 +22,7 @@ export class CurrencyService {
     return this.http.get<Currency[]>(this.url);
   }
 
-  getAllCoins(): Observable<coinResponse> {
-    return this.http.get<coinResponse>(this.coinUrl);
+  getAllCoins(): Observable<CoinResponse> {
+    return this.http.get<CoinResponse>(this.coinUrl);
   }
 }

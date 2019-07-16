@@ -5,14 +5,30 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
+import { AllCoinsComponent } from './components/all-coins/all-coins.component';
+import { MenuComponent } from './components/menu/menu.component';
+
+import { MenubarModule } from 'primeng/menubar';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
+
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AllCoinsComponent,
+    MenuComponent,
+
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    MenubarModule,
+    InputTextModule,
+    ButtonModule,
+    CardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,12 +1,10 @@
-<!--The content below is only a placeholder and can be replaced.-->
+<app-menu></app-menu>
 <div style="text-align:center">
   <h1>
     {{title}}
   </h1>
 </div>
 
-<ul>
-  <li *ngFor="let coin of coinList | keyvalue">
-    {{coin.key}} - {{coin.value.FullName}}
-  </li>
-</ul>
+<div>
+  <app-all-coins></app-all-coins>
+</div>

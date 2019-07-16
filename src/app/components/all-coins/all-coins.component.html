@@ -1,0 +1,25 @@
+<ul style="list-style-type:none">
+  <li *ngFor="let coin of coinList | keyvalue">
+    <!-- {{coin.key}} - {{coin.value.FullName}} -->
+    <!-- <img src="{{baseImageUrl}}{{coin.value.ImageUrl}}" alt="Smiley face" height="42" width="42"> -->
+
+  </li>
+</ul>
+
+<div class="ui-g">
+  <div class="ui-g-12" style="display: flex;flex-wrap:wrap; justify-content: space-between;">
+    <div class="ui-g-12 ui-md-6 ui-lg-3" style="flex: 0 1 auto;" *ngFor="let coin of coinList | keyvalue">
+      <p-card styleClass="card">
+        <p-header>
+          <div class="ui-g-12" style="text-align: center">
+            {{coin.value.CoinName}}
+          </div>
+        </p-header>
+        <div>
+          <img src="{{baseImageUrl}}{{coin.value.ImageUrl}}">
+        </div>
+
+      </p-card>
+    </div>
+  </div>
+</div>

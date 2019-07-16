@@ -1,6 +1,6 @@
-import { CoinList } from '../Model/coinList.model';
+import { CoinList } from '../Model/coinlist.model';
 
-export class coinResponse {
+export class CoinResponse {
     Response: string;
     Message: string;
     Data: CoinList[];
