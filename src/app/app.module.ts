@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -12,14 +13,15 @@ import { MenubarModule } from 'primeng/menubar';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
-
-
+import { CoinInfoComponent } from './components/coin-info/coin-info.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     AllCoinsComponent,
     MenuComponent,
+    CoinInfoComponent,
 
   ],
   imports: [
@@ -28,7 +30,8 @@ import { CardModule } from 'primeng/card';
     MenubarModule,
     InputTextModule,
     ButtonModule,
-    CardModule
+    CardModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
