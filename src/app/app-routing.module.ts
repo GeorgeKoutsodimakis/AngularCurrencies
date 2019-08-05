@@ -1,22 +1,22 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Routes, RouterModule } from '@angular/router';
-import { AllCoinsComponent } from './components/all-coins/all-coins.component';
+
+import { NgModule, Component } from '@angular/core';
+import { RouterModule, Router, Routes } from '@angular/router';
 import { CoinInfoComponent } from './components/coin-info/coin-info.component';
+import { AllCoinsComponent } from './components/all-coins/all-coins.component';
 
+const routes: Routes = [
+    { path: '', redirectTo: '/coins', pathMatch: 'full' },
 
-const appRoutes: Routes = [
-  { path: '', component: AllCoinsComponent },
-  { path: 'coin', component: CoinInfoComponent },
-]
+    {
+        path: 'coins', component: AllCoinsComponent
+    },
+    {
+        path: 'coin', component: CoinInfoComponent
+    }
+];
+
 @NgModule({
-  imports: [
-    RouterModule.forRoot(
-      appRoutes,
-    )
-  ],
-  exports: [
-    RouterModule
-  ]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule { }

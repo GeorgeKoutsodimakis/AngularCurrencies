@@ -9,7 +9,7 @@
 <div class="ui-g">
   <div class="ui-g-12" style="display: flex;flex-wrap:wrap; justify-content: space-between;">
     <div class="ui-g-12 ui-md-6 ui-lg-3" style="flex: 0 1 auto;" *ngFor="let coin of coinList | keyvalue">
-      <p-card styleClass="card" (click)="coinClick($event, coin.value)">
+      <p-card styleClass="card" (click)="coinClick($event, coin.value);">
         <p-header>
           <div class="ui-g-12" style="text-align: center">
             {{coin.value.CoinName}}

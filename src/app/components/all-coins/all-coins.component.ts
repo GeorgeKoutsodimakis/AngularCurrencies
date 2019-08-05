@@ -15,6 +15,7 @@ export class AllCoinsComponent implements OnInit {
   currencies: Currency[];
   coinList: CoinList[];
   baseImageUrl: string;
+  coin: Coin;
 
   constructor(private currencyService: CurrencyService,
     public router: Router) { }
@@ -34,9 +35,10 @@ export class AllCoinsComponent implements OnInit {
   }
 
   coinClick(event, coin: Coin) {
-
-    this.router.navigate(['/coin']);
+    console.log(event);
     console.log(coin.CoinName);
+    this.coin = coin;
+    this.router.navigateByUrl('/coin');
   }
 
 }

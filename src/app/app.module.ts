@@ -23,6 +23,7 @@ import { AppRoutingModule } from './app-routing.module';
     MenuComponent,
     CoinInfoComponent,
 
+
   ],
   imports: [
     BrowserModule,
@@ -33,7 +34,6 @@ import { AppRoutingModule } from './app-routing.module';
     CardModule,
     AppRoutingModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
