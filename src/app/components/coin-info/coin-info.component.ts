@@ -8,6 +8,7 @@ import { CoinInfoService } from 'src/app/shared/Services/coin.info.service';
   styleUrls: ['./coin-info.component.css']
 })
 export class CoinInfoComponent implements OnInit {
+  baseImgUrl = "https://www.cryptocompare.com"
 
   coin: Coin;
   constructor(public coinInfo: CoinInfoService) { }
@@ -16,7 +17,7 @@ export class CoinInfoComponent implements OnInit {
     this.coin = new Coin();
     this.coinInfo.$coin.subscribe(value => {
       this.coin = value;
-      console.log('coin' + this.coin);
+      console.log('coin' + this.coin.ImageUrl);
     })
   }
 
