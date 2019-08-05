@@ -15,6 +15,7 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { CoinInfoComponent } from './components/coin-info/coin-info.component';
 import { AppRoutingModule } from './app-routing.module';
+import { CoinInfoService } from '../app/shared/Services/coin.info.service';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { AppRoutingModule } from './app-routing.module';
     CardModule,
     AppRoutingModule
   ],
+  providers: [CoinInfoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

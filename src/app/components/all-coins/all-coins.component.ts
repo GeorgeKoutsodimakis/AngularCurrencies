@@ -4,6 +4,8 @@ import { CoinList } from 'src/app/shared/Model/coinList.model';
 import { CurrencyService } from 'src/app/shared/Services/currency.service';
 import { Coin } from 'src/app/shared/Model/coin.model';
 import { Router } from '@angular/router'
+import { CoinInfoService } from 'src/app/shared/Services/coin.info.service';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-all-coins',
@@ -17,8 +19,10 @@ export class AllCoinsComponent implements OnInit {
   baseImageUrl: string;
   coin: Coin;
 
-  constructor(private currencyService: CurrencyService,
-    public router: Router) { }
+  constructor(
+    private currencyService: CurrencyService,
+    public router: Router,
+    public coinInfo: CoinInfoService) { }
   // getCurrencies(): void {
   //   this.currencyService.getAllCurrencies()
   //     .subscribe(currencies => this.currencies = currencies);
@@ -37,8 +41,8 @@ export class AllCoinsComponent implements OnInit {
   coinClick(event, coin: Coin) {
     console.log(event);
     console.log(coin.CoinName);
-    this.coin = coin;
-    this.router.navigateByUrl('/coin');
+    this.coinInfo.setCoin(coin);
+    this.router.navigate(['/coin']);
   }
 
 }
