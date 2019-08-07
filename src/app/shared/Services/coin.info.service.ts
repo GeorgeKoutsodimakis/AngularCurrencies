@@ -6,6 +6,8 @@ import { BehaviorSubject } from 'rxjs';
 export class CoinInfoService {
     constructor() { }
 
+    symbolUrl = "https://min-api.cryptocompare.com/data/price?"
+
     private coin: BehaviorSubject<Coin> = new BehaviorSubject<Coin>(null);
     get $coin() {
         return this.coin.asObservable();

@@ -39,7 +39,6 @@ export class AllCoinsComponent implements OnInit {
   }
 
   coinClick(event, coin: Coin) {
-    console.log(event);
     console.log(coin.CoinName);
     this.coinInfo.setCoin(coin);
     this.router.navigate(['/coin']);

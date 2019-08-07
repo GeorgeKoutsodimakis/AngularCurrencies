@@ -16,6 +16,7 @@ import { CardModule } from 'primeng/card';
 import { CoinInfoComponent } from './components/coin-info/coin-info.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CoinInfoService } from '../app/shared/Services/coin.info.service';
+import { SymbolsComponent } from './components/symbols/symbols.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { CoinInfoService } from '../app/shared/Services/coin.info.service';
     AllCoinsComponent,
     MenuComponent,
     CoinInfoComponent,
+    SymbolsComponent,
 
 
   ],

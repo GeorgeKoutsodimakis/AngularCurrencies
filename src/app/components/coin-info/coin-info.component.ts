@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Coin } from 'src/app/shared/Model/coin.model';
 import { CoinInfoService } from 'src/app/shared/Services/coin.info.service';
 
+
 @Component({
   selector: 'app-coin-info',
   templateUrl: './coin-info.component.html',
@@ -17,7 +18,7 @@ export class CoinInfoComponent implements OnInit {
     this.coin = new Coin();
     this.coinInfo.$coin.subscribe(value => {
       this.coin = value;
-      console.log('coin' + this.coin.ImageUrl);
+      console.log('COIN ID ' + this.coin.Symbol);
     })
   }
 
