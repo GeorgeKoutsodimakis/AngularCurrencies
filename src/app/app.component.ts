@@ -1,4 +1,4 @@
-import { CurrencyService } from './shared/Services/currency.service';
+import { CoinsService } from './shared/Services/coins.service';
 import { Component, OnInit } from '@angular/core';
 import { Currency } from './shared/Model/currency.model';
 import { CoinList } from './shared/Model/coinlist.model';

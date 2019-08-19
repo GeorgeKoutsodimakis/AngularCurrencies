@@ -15,9 +15,9 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { CoinInfoComponent } from './components/coin-info/coin-info.component';
 import { AppRoutingModule } from './app-routing.module';
-import { CoinInfoService } from '../app/shared/Services/coin.info.service';
-import { SymbolFullDataService } from '../app/shared/Services/symbol.full.data.service';
-import { SymbolFullDataComponent } from './components/symbol-full-data/symbol-full-data.component';
+import { SymbolFullDataComponent } from './components/coin-info/symbol-full-data/symbol-full-data.component';
+import { CoinInfoService } from './shared/Services/coin.info.service';
+import { CoinsService } from './shared/Services/coins.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,7 @@ import { SymbolFullDataComponent } from './components/symbol-full-data/symbol-fu
     CardModule,
     AppRoutingModule
   ],
-  providers: [CoinInfoService, SymbolFullDataService],
+  providers: [CoinInfoService, CoinsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

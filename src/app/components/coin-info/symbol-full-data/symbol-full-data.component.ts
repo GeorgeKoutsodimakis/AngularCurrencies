@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { SymbolFullDataService } from 'src/app/shared/Services/symbol.full.data.service';
 import { Coin } from 'src/app/shared/Model/coin.model';
 
 @Component({
@@ -9,17 +8,12 @@ import { Coin } from 'src/app/shared/Model/coin.model';
 })
 export class SymbolFullDataComponent implements OnInit {
 
-  constructor(public symbolFullDataService: SymbolFullDataService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.getSymbolFullData();
   }
 
-  getSymbolFullData() {
-    this.symbolFullDataService.getSymbolFullData().subscribe(value => {
-      console.log(value);
-    });
-  }
+
 
 
 

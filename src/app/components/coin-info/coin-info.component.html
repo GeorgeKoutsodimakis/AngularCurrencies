@@ -1,19 +1,11 @@
 <div class="ui-g">
   <div class="ui-g-12">
-    <div class="ui-g-3">
-      <p-card styleClass="card">
-        <p-header>
-          <div class="ui-g-12" style="text-align: center">
-            {{coin.CoinName}}
-          </div>
-        </p-header>
-        <div>
-          <img src="{{baseImgUrl}}{{coin.ImageUrl}}"> </div>
+    <ul>
+      <li *ngFor="let item of coinCurrencyList | keyvalue">
+        {{item.key}}
+      </li>
+    </ul>
+    <app-symbol-full-data></app-symbol-full-data>
 
-      </p-card>
-    </div>
-    <div class="ui-g-9">
-      <app-symbol-full-data></app-symbol-full-data>
-    </div>
   </div>
 </div>

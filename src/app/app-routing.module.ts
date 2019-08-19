@@ -11,7 +11,7 @@ const routes: Routes = [
         path: 'coins', component: AllCoinsComponent
     },
     {
-        path: 'coin', component: CoinInfoComponent
+        path: 'coin/:id', component: CoinInfoComponent
     }
 ];
 

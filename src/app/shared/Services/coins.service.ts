@@ -10,15 +10,11 @@ import { CoinResponse } from '../Response/coin.response.model';
 @Injectable({
   providedIn: 'root'
 })
-export class CurrencyService {
+export class CoinsService {
   private url = 'https://api.nexchange.io/en/api/v1/currency/';
   private coinUrl = 'https://min-api.cryptocompare.com/data/all/coinlist';
 
   constructor(private http: HttpClient) { }
-
-  getAllCurrencies(): Observable<Currency[]> {
-    return this.http.get<Currency[]>(this.url);
-  }
 
   getAllCoins(): Observable<CoinResponse> {
     return this.http.get<CoinResponse>(this.coinUrl);
