@@ -7,7 +7,6 @@ export class Currency {
   PRICE: number;
   LASTUPDATE: number;
   LASTVOLUME: number;
-  LASTVOLUMETO: number;
   LASTTRADEID: string;
   VOLUMEDAY: number;
   VOLUMEDAYTO: number;

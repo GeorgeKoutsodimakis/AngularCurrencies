@@ -1,11 +1,15 @@
 <div class="ui-g">
   <div class="ui-g-12">
-    <ul>
-      <li *ngFor="let item of coinCurrencyList | keyvalue">
-        {{item.key}}
-      </li>
-    </ul>
-    <app-symbol-full-data></app-symbol-full-data>
+    <div class="ui-g-2">
+      <p-card styleClass="card">
+
+        <div>
+          <img src="{{imageUrl}}" alt="">
+        </div>
+
+      </p-card>
+    </div>
+    <app-symbol-full-data [usdCurrency]="usdCurrency" [eurCurrency]="eurCurrency"></app-symbol-full-data>
 
   </div>
 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Coin } from 'src/app/shared/Model/coin.model';
+import { Currency } from 'src/app/shared/Model/currency.model';
 
 @Component({
   selector: 'app-symbol-full-data',
@@ -8,6 +9,8 @@ import { Coin } from 'src/app/shared/Model/coin.model';
 })
 export class SymbolFullDataComponent implements OnInit {
 
+  @Input() usdCurrency: Currency;
+  @Input() eurCurrency: Currency;
   constructor() { }
 
   ngOnInit() {
