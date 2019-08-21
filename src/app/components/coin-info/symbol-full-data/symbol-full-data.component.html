@@ -1,3 +1,12 @@
-<p>
-  symbol-full-data works!
-</p>
+<p-tabView (onChange)="onTabChange($event)" [activeIndex]="activeIndex">
+  <p-tabPanel [header]="item" *ngFor="let item of keys; let i = index" [selected]="i == 0">
+    <ng-template pTemplate="content">
+      {{content}}
+
+
+    </ng-template>
+
+  </p-tabPanel>
+
+
+</p-tabView>

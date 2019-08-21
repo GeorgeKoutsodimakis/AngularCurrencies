@@ -1,15 +1,15 @@
 <div class="ui-g">
   <div class="ui-g-12">
-    <div class="ui-g-2">
+    <div class="ui-g-2" style="text-align: center">
+      <h3>{{coinId}}</h3>
       <p-card styleClass="card">
-
-        <div>
-          <img src="{{imageUrl}}" alt="">
-        </div>
-
+        <img src="{{imageUrl}}" alt="">
       </p-card>
     </div>
-    <app-symbol-full-data [usdCurrency]="usdCurrency" [eurCurrency]="eurCurrency"></app-symbol-full-data>
+    <div class="ui-g-9">
+      <app-symbol-full-data [usdCurrency]="usdCurrency" [eurCurrency]="eurCurrency" [keys]="keys">
+      </app-symbol-full-data>
+    </div>
 
   </div>
 </div>
