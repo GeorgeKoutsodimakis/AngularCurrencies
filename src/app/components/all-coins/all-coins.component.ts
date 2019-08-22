@@ -13,26 +13,50 @@ import { Router } from '@angular/router'
 export class AllCoinsComponent implements OnInit {
 
   coinList: CoinList[];
-  baseImageUrl: string;
-  coin: Coin;
+  coins: Coin[];
+  cols: any[];
+  keys: string[];
+  image: string;
+  totalRecords: number;
+  baseUrl: string;
 
   constructor(
     private coinsService: CoinsService,
     public router: Router) { }
 
+  ngOnInit() {
+    this.coins = [];
+    this.baseUrl = "https://www.cryptocompare.com"
+    this.getAllCoins();
+    this.cols = [
+      { field: 'coin', header: 'coin' },
+      { field: 'price', header: 'price' },
+    ]
+    console.log(this.coins);
+  }
 
-  getAllCoins(): void {
+  getAllCoins() {
     this.coinsService.getAllCoins().subscribe(response => {
       this.coinList = response.Data;
-      this.baseImageUrl = response.BaseImageUrl;
+      this.keys = Object.keys(this.coinList);
+      this.keys.forEach(value => {
+        this.coins.push(this.coinList[value]);
+        this.totalRecords = this.coins.length;
+      });
+
     });
-  }
-  ngOnInit() {
-    this.getAllCoins();
   }
 
   coinClick(event, coin: Coin) {
     this.router.navigate(['/coin', coin.Symbol]);
+  }
+
+  getColumns() {
+    return this.cols = [
+      { field: 'coin', header: 'coin' },
+      { field: 'price', header: 'Yepricear' },
+    ]
+
   }
 
 }

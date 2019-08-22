@@ -19,7 +19,8 @@ import { SymbolFullDataComponent } from './components/coin-info/symbol-full-data
 import { CoinInfoService } from './shared/Services/coin.info.service';
 import { CoinsService } from './shared/Services/coins.service';
 import { TabViewModule } from 'primeng/tabview';
-
+import { TableModule } from 'primeng/table';
+import { DropdownModule } from 'primeng/dropdown'
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +39,8 @@ import { TabViewModule } from 'primeng/tabview';
     ButtonModule,
     CardModule,
     TabViewModule,
+    TableModule,
+    DropdownModule,
     AppRoutingModule
   ],
   providers: [CoinInfoService, CoinsService],
