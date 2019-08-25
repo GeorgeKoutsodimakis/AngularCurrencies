@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { Coin } from '../Model/coin.model';
 import { CoinList } from '../Model/coinlist.model';
 import { CoinResponse } from '../Response/coin.response.model';
+import { CoinInfoResponse } from '../Response/coin.info.response';
+import { CoinCurrencyModel } from '../Model/coin.curency.model';
 
 
 @Injectable({
@@ -16,7 +18,22 @@ export class CoinsService {
 
   constructor(private http: HttpClient) { }
 
-  getAllCoins(): Observable<CoinResponse> {
-    return this.http.get<CoinResponse>(this.coinUrl);
+  // getAllCoins(): Observable<CoinResponse> {
+  //   return this.http.get<CoinResponse>(this.coinUrl);
+  // }
+
+
+  getAllCoins() {
+    return this.http.get<CoinResponse>(this.coinUrl)
+      .toPromise()
+      .then(res => <CoinList[]>res.Data)
+      .then(Data => { return Data });
+  }
+
+  getAllCoinsInfo(coins: string) {
+    return this.http.get<CoinInfoResponse>("https://min-api.cryptocompare.com/data/pricemultifull?fsyms=" + coins + "&tsyms=USD")
+      .toPromise()
+      .then(res => <CoinCurrencyModel>res.DISPLAY)
+      .then(DISPLAY => { return DISPLAY })
   }
 }

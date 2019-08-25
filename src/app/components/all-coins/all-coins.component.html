@@ -1,21 +1,7 @@
 <div class="ui-g">
-  <!-- <div class="ui-g-12" style="display: flex;flex-wrap:wrap; justify-content: space-between;">
-    <div class="ui-g-12 ui-md-6 ui-lg-3" style="flex: 0 1 auto;" *ngFor="let coin of coinList | keyvalue">
-      <p-card styleClass="card" (click)="coinClick($event, coin.value);">
-        <p-header>
-          <div class="ui-g-12" style="text-align: center">
-            {{coin.value.CoinName}}
-          </div>
-        </p-header>
-        <div>
-          <img src="{{baseImageUrl}}{{coin.value.ImageUrl}}">
-        </div>
-
-      </p-card>
-    </div>
-  </div> -->
   <div class="ui-g-12">
-    <p-table [columns]="cols" [value]="coins" [totalRecords]="totalRecords" [paginator]="true" [rows]="10">
+    <p-table [columns]="cols" (onLazyLoad)="loadCoinsLazy($event)" [lazy]="true" [loading]="loading" [value]="coinTable"
+      [totalRecords]="totalRecords" [paginator]="true" [rows]="10">
       <ng-template pTemplate="header" let-columns>
         <tr>
           <th *ngFor="let col of columns">
@@ -23,17 +9,31 @@
           </th>
         </tr>
       </ng-template>
-      <ng-template pTemplate="body" let-coin>
+      <ng-template pTemplate="body" let-coinTable>
         <tr>
-          <td style="display: flex;flex-direction: row;flex-wrap:wrap;align-items: center">
-            <div style="flex: 0 1 auto">
-              <img style="width: 30px;vertical-align: middle" src={{baseUrl}}{{coin.ImageUrl}} />
-            </div>
-            <div style="flex: 0 1 auto">
-              <h3><span style="font-style: normal; font-size: 14px;">{{coin.CoinName}}</span> <br>
-                <i style="font-style: normal; font-size: 14px;color: #666">{{coin.Name}}</i>
+          <td>
+            <div style="display: flex;flex-direction: row;flex-wrap:wrap;align-items: center">
+              <img style="width: 30px;vertical-align: middle flex: 0 1 auto" src={{baseUrl}}{{coinTable.imageUrl}} />
+              <h3 style="flex: 0 1 auto"><span
+                  style="font-style: normal; font-size: 14px;">{{coinTable.coinSymbol}}</span> <br>
+                <i style="font-style: normal; font-size: 14px;color: #666">{{coinTable.coinName}}</i>
               </h3>
             </div>
+          </td>
+          <td>
+            <h3>{{coinTable.price}}</h3>
+          </td>
+          <td>
+            <h3>{{coinTable.total_vol}}</h3>
+          </td>
+          <td>
+            <h3>{{coinTable.top_tier_vol}}</h3>
+          </td>
+          <td>
+            <h3> {{coinTable.mkt_cap}}</h3>
+          </td>
+          <td>
+            <h3>{{coinTable.change_24H}}</h3>
           </td>
         </tr>
       </ng-template>
