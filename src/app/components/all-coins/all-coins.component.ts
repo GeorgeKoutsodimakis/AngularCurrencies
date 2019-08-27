@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef, OnChanges } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CoinList } from 'src/app/shared/Model/coinList.model';
 import { CoinsService } from 'src/app/shared/Services/coins.service';
 import { Coin } from 'src/app/shared/Model/coin.model';
@@ -6,9 +6,11 @@ import { Router } from '@angular/router'
 import { LazyLoadEvent } from 'primeng/api';
 import { CoinInfoResponse } from 'src/app/shared/Response/coin.info.response';
 import { coinTableModel } from 'src/app/shared/Model/coinTableModel';
-import { CoinCurrencyModel } from 'src/app/shared/Model/coin.curency.model';
-import { element } from 'protractor';
+import { interval } from 'rxjs/internal/observable/interval';
+import { flatMap } from 'rxjs/operators';
 import { Currency } from 'src/app/shared/Model/currency.model';
+import { MultiplyPipe } from 'src/app/components/Pipe/multiply.pipe';
+
 
 @Component({
   selector: 'app-all-coins',
@@ -29,19 +31,24 @@ export class AllCoinsComponent implements OnInit {
   coinInfoResponse: CoinInfoResponse;
   coinsId: string[];
   coinTable: coinTableModel[];
+
   tableValue: coinTableModel;
+  coinValue: Currency[];
+  isNaN: Function = Number.isNaN;
 
   constructor(
     private coinsService: CoinsService,
     public router: Router,
-    public changeDetectorRef: ChangeDetectorRef) { }
+    public changeDetectorRef: ChangeDetectorRef
+  ) { }
 
   ngOnInit() {
+
     this.tableValue = new coinTableModel();
     this.coinsId = [];
     this.coins = [];
     this.lazyCoin = [];
-    this.coinTable = [];
+    this.coinValue = [];
     this.baseUrl = "https://www.cryptocompare.com"
     this.cols = this.getColumns();
     this.getAllCoins();
@@ -85,7 +92,7 @@ export class AllCoinsComponent implements OnInit {
 
         this.loading = false;
       }
-    }, 1000);
+    }, 1500);
   }
 
   getCoinsId(coins: Coin[]) {
@@ -100,24 +107,23 @@ export class AllCoinsComponent implements OnInit {
     return this.coinsService.getAllCoinsInfo(coins).then(value => {
       let coinValue = value;
       this.coinTable = [];
-
+      let coinKeys = Object.keys(coinValue);
       for (var i in this.lazyCoin) {
         this.tableValue = new coinTableModel();
         this.tableValue.coinSymbol = this.lazyCoin[i].Symbol;
         this.tableValue.coinId = this.lazyCoin[i].Id;
         this.tableValue.coinName = this.lazyCoin[i].CoinName;
         this.tableValue.imageUrl = this.lazyCoin[i].ImageUrl;
-        //this.tableValue.price = Object.values(coinValue)[i].PRICE.toString() !== 'undefined' ? Object.values(coinValue)[i]['USD'].PRICE : "-";
-        // console.log(Object.values(coinValue)[i]['USD']);
-        // this.tableValue.price = (Object.values(coinValue)[i]['USD'].PRICE != 'undefined') ? Object.values(coinValue)[i]['USD'].PRICE : "-";
-        // this.tableValue.total_vol = Object.values(coinValue)[i]['USD'].TOTALVOLUME24H;
-        // this.tableValue.top_tier_vol = Object.values(coinValue)[i]['USD'].TOTALTOPTIERVOLUME24H;
-        // this.tableValue.mkt_cap = Object.values(coinValue)[i]['USD'].MKTCAP;
-        // this.tableValue.change_24H = Object.values(coinValue)[i]['USD'].CHANGE24HOUR;
-
+        for (var x in coinKeys) {
+          if (coinKeys[x].includes(this.lazyCoin[i].Symbol)) {
+            this.tableValue.price = Object.values(coinValue)[x]['USD'].PRICE;
+            this.tableValue.total_vol = Object.values(coinValue)[x]['USD'].TOTALVOLUME24H;
+            this.tableValue.top_tier_vol = Object.values(coinValue)[x]['USD'].TOTALTOPTIERVOLUME24H;
+            this.tableValue.mkt_cap = Object.values(coinValue)[x]['USD'].MKTCAP;
+            this.tableValue.change_24H = Object.values(coinValue)[x]['USD'].CHANGE24HOUR;
+          }
+        }
         this.coinTable.push(this.tableValue);
-        continue;
-
       }
     });
   }
@@ -125,5 +131,3 @@ export class AllCoinsComponent implements OnInit {
 
 
 }
-
-

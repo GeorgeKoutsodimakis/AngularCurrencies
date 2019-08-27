@@ -3,9 +3,11 @@ export class coinTableModel {
     coinId: string;
     coinName: string;
     imageUrl: string;
-    price: string;
-    total_vol: string;
-    top_tier_vol: string;
-    mkt_cap: string;
-    change_24H: string;
+    price: number;
+    total_vol: number;
+    top_tier_vol: number;
+    mkt_cap: number;
+    change_24H: number;
+    fromSymbol: string;
+    toSymbol: string;
 }

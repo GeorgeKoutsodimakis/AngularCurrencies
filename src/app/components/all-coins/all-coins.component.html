@@ -21,19 +21,19 @@
             </div>
           </td>
           <td>
-            <h3>{{coinTable.price}}</h3>
+            <h3>{{coinTable.price ? coinTable.price : '-'}}</h3>
           </td>
           <td>
-            <h3>{{coinTable.total_vol}}</h3>
+            <h3>{{coinTable.total_vol ? coinTable.total_vol: "-" }}</h3>
           </td>
           <td>
-            <h3>{{coinTable.top_tier_vol}}</h3>
+            <h3>{{coinTable.top_tier_vol ? coinTable.top_tier_vol : '-'}}</h3>
           </td>
           <td>
-            <h3> {{coinTable.mkt_cap}}</h3>
+            <h3> {{coinTable.mkt_cap ? coinTable.mkt_cap : '-'}}</h3>
           </td>
           <td>
-            <h3>{{coinTable.change_24H}}</h3>
+            <h3>{{coinTable.change_24H ? coinTable.change_24H : '-'}}</h3>
           </td>
         </tr>
       </ng-template>
