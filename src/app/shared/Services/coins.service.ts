@@ -32,8 +32,8 @@ export class CoinsService {
 
   getAllCoinsInfo(coins: string) {
     return this.http.get<CoinInfoResponse>("https://min-api.cryptocompare.com/data/pricemultifull?fsyms=" + coins + "&tsyms=USD")
-      .toPromise()
-      .then(res => <CoinCurrencyModel>res.DISPLAY)
-      .then(DISPLAY => { return DISPLAY })
+      // .toPromise()
+      // .then(res => <CoinCurrencyModel>res.DISPLAY)
+      // .then(DISPLAY => { return DISPLAY })
   }
 }
